@@ -5,7 +5,8 @@
 get_header();
 
 $price = get_fields();
-echo esc_html(var_dump($price));
+// echo esc_html(var_dump($price));
+// echo esc_html( '<i class="fas fa-laptop fa-4x"></i>' );
 ?>
 
 
@@ -49,7 +50,7 @@ echo esc_html(var_dump($price));
 
 <!-- OPT in section 
 ======================-->
-<?php get_template_part('template_parts/content', 'optin', $price); ?>
+<?php get_template_part('template-parts/content', 'optin', $price); ?>
 
 <!-- Boost your income 
 ======================-->
@@ -105,34 +106,39 @@ echo esc_html(var_dump($price));
 <section id="course-features" class="text-center">
     <div class="container">
         <div class="section-header">
-            <img class="wow animate__backInDown" data-wow-duration="1s" data-wow-offset="3" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-rocket.png" alt="" />
-            <h2 class="wow animate__backInRight" data-wow-duration="1s" data-wow-offset="3">Course Features</h2>
+
+            <!-- check if image exits -->
+            <?php if (!empty($price['course_feature_img'])) : ?>
+                <img class="wow animate__backInDown" data-wow-duration="1s" data-wow-offset="3" src="<?php echo $price['course_feature_img']['url'] ?>" alt="<?php echo $price['course_feature_img']['alt'] ?>" />
+            <?php endif; ?>
+
+            <h2 class="wow animate__backInRight" data-wow-duration="1s" data-wow-offset="3"><?php echo $price['course_feature_title']; ?></h2>
+
+            <?php if (isset($price['course_feature_body'])) : ?>
+                <p class="lead mb-5">
+                    <?php echo $price['course_feature_body']; ?>
+                </p>
+            <?php endif; ?>
         </div>
+
+        <!-- custom query for course feature -->
+        <?php
+        $course_features = new WP_Query(array(
+            'post_type' => 'course_feature',
+            'posts_per_page' => -1,
+            'orderby' => 'post_id',
+            'order' => 'ASC'
+        ));
+        // var_dump($course_features);
+        ?>
+
         <div class="row">
-            <div class="col-sm-2 mb-5">
-                <i class="fas fa-laptop fa-4x"></i>
-                <h4>Lifetime access of 80+ lecture</h4>
-            </div>
-            <div class="col-sm-2 mb-5">
-                <i class="far fa-clock fa-4x"></i>
-                <h4>10+ hours of HD video</h4>
-            </div>
-            <div class="col-sm-2 mb-sm-5">
-                <i class="fas fa-tablet-alt fa-4x"></i>
-                <h4>Lifetime access of 80+ lecture</h4>
-            </div>
-            <div class="col-sm-2 mb-sm-5">
-                <i class="far fa-calendar-alt fa-4x"></i>
-                <h4>30 day money back guarantee</h4>
-            </div>
-            <div class="col-sm-2 mb-sm-5">
-                <i class="fas fa-broadcast-tower fa-4x"></i>
-                <h4>Huge and friendly community</h4>
-            </div>
-            <div class="col-sm-2 mb-sm-5">
-                <i class="fas fa-chalkboard-teacher fa-4x"></i>
-                <h4>Huge and friendly community</h4>
-            </div>
+            <?php while ($course_features->have_posts()) : $course_features->the_post(); ?>
+                <div class="col-sm-2 mb-5">
+                    <?php echo get_field('feature_icon'); ?>
+                    <h4 class="mt-4"><?php the_title(); ?></h4>
+                </div>
+            <?php endwhile; wp_reset_postdata(); ?>
         </div>
     </div>
 </section>

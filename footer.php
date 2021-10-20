@@ -33,7 +33,7 @@
     ======================-->
 <?php 
 $footer_price = get_fields(1064);//here 1064 is home page id
-get_template_part('template_parts/content', 'optin', $footer_price); ?>
+get_template_part('template-parts/content', 'optin', $footer_price); ?>
 
 
 <!--  footer
