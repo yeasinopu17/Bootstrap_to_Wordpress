@@ -1,0 +1,502 @@
+/*!
+Theme Name: Bootstrap to WordPress
+Theme URI: http://underscores.me/
+Author: yeasinopu
+Author URI: https://sites.google.com/view/yeasinopu/
+Description: A custom wp theme using bootstrap
+Version: 1.0.0
+Tested up to: 5.4
+Requires PHP: 5.6
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: bootstrap2wordpress
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned.
+
+Bootstrap to WordPress is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Generic
+	- Normalize
+	- Box sizing
+# Base
+	- Typography
+	- Elements
+	- Links
+	- Forms
+## Layouts
+# Components
+	- Navigation
+	- Posts and pages
+	- Comments
+	- Widgets
+	- Media
+	- Captions
+	- Galleries
+# plugins
+	- Jetpack infinite scroll
+# Utilities
+	- Accessibility
+	- Alignments
+	-theme specific style
+
+
+
+/* Small menu. */
+.menu-toggle,
+.main-navigation.toggled ul {
+  display: block;
+}
+
+@media screen and (min-width: 37.5em) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .main-navigation ul {
+    display: flex;
+  }
+}
+
+.site-main .comment-navigation,
+.site-main .posts-navigation,
+.site-main .post-navigation {
+  margin: 0 0 1.5em;
+}
+
+.comment-navigation .nav-links,
+.posts-navigation .nav-links,
+.post-navigation .nav-links {
+  display: flex;
+}
+
+.comment-navigation .nav-previous,
+.posts-navigation .nav-previous,
+.post-navigation .nav-previous {
+  flex: 1 0 50%;
+}
+
+.comment-navigation .nav-next,
+.posts-navigation .nav-next,
+.post-navigation .nav-next {
+  text-align: end;
+  flex: 1 0 50%;
+}
+
+/* Accessibility
+--------------------------------------------- */
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  clip-path: none;
+  color: #21759b;
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+}
+
+/* Do not show the outline on the skip link target. */
+#primary[tabindex="-1"]:focus {
+  outline: 0;
+}
+
+/* Alignments
+--------------------------------------------- */
+.alignleft {
+  /*rtl:ignore*/
+  float: left;
+
+  /*rtl:ignore*/
+  margin-right: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.alignright {
+  /*rtl:ignore*/
+  float: right;
+
+  /*rtl:ignore*/
+  margin-left: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5em;
+}
+
+/*
+* Theme specific style by yeasinopu
+*/
+
+/* COLOUR REFERENCES
+
+Green:		#79b044
+Salmon:		#dd5638
+Blue Gray:  #3e4249
+
+*/
+
+/* ==== GENERAL ==== */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin-top: 3.5rem;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  background: url("assets/img/tile.jpg") top left repeat;
+}
+.logged-in .fixed-top {
+  top: 32px;
+}
+
+/* ==== GLOBAL ==== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-rendering: optimizelegibility;
+  font-weight: bold;
+}
+h1 {
+  font-size: 4vw;
+}
+h1,
+h2 {
+  margin: 0 0 1rem;
+}
+h3 {
+  margin: 1.4rem 0;
+}
+h4 {
+  font-size: 1.1rem;
+}
+.btn {
+  font-weight: bold;
+}
+.btn-danger {
+  background-color: #dd5638;
+  border-collapse: #d95131;
+}
+img {
+  max-height: 100%;
+  max-width: 100%;
+}
+/* hero */
+#hero {
+  background: url("assets/img/hero-bg.jpg") 50% 0 repeat fixed;
+  min-height: 3.125rem;
+  padding: 2.5rem;
+  color: white;
+}
+.hero-text {
+  margin-top: 2rem;
+}
+#hero article {
+  width: 100%;
+  text-align: center;
+}
+
+#price-timeline {
+  margin: 2rem 0 4rem;
+  text-align: center;
+}
+
+#price-timeline .price {
+  display: inline-block;
+  margin: 2% 0 0 0;
+  width: 30%;
+  background: #3e4249;
+  padding: 10px 20px 30px;
+  position: relative;
+  vertical-align: top;
+}
+
+#price-timeline .price.active {
+  background: #dd5638;
+}
+#price-timeline .price span {
+  background: #101011;
+  display: block;
+  height: 70px;
+  width: 70px;
+  text-align: center;
+  line-height: 70px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-radius: 100%;
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  margin-left: -35px;
+}
+#price-timeline h4 {
+  margin: 0 0 10px;
+}
+
+#price-timeline h4 small {
+  color: white;
+  font-weight: bold;
+  display: block;
+}
+
+/* Layout */
+section {
+  padding: 5rem 0;
+}
+section h2 {
+  margin: 20px 0 40px;
+}
+section h3 {
+  margin: 30px 0 10px;
+}
+.section-header {
+  text-align: center;
+}
+
+#optin {
+  background: #3e4249;
+  padding: 15px 0;
+  color: white;
+  font-size: 1.2em;
+}
+#optin p {
+  margin: 7px 0 0 0;
+}
+#course-features {
+  background-color: #3e4249;
+  color: white;
+}
+
+#featurette {
+  background: url("assets/img/stuff-bg.jpg") 50% 100% repeat fixed;
+  background-size: cover;
+}
+
+#instructor {
+  background: white url("assets/img/brad-elvis.png") 90% -10px no-repeat;
+}
+
+.text-justified {
+  text-align: justify;
+}
+
+#instructor h2 {
+  margin: 0 0 20px;
+}
+#instructor .num {
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: white;
+  text-align: center;
+  background: #dd5638;
+  width: 140px;
+  height: 140px;
+  border-radius: 100%;
+  padding: 20%;
+}
+#signup {
+  background: url("assets/img/hipster-stuff.jpg") center center repeat fixed;
+  background-size: cover;
+  padding: 140px 0;
+}
+
+#signup strong {
+  border-bottom: 1px solid #dd5638;
+}
+.btn-focus:focus {
+  box-shadow: 0 0 0 0.25rem rgb(19, 103, 64);
+}
+.btn-success {
+  color: #fff;
+  background-color: #79b044;
+  border-color: #79b044;
+}
+footer {
+  background-color: rgb(33, 37, 41);
+  color: white;
+  padding: 20px 0 10px;
+  font-size: 1rem;
+}
+footer p {
+  margin: 0;
+}
+footer a {
+  text-decoration: none;
+}
+footer a:link,
+footer a:visited {
+  color: white;
+}
+footer a:hover {
+  color: #dd5638;
+}
+footer li.signup-link a {
+  color: #dd5638;
+}
+footer li.signup-link a:hover {
+  font-weight: bold;
+}
+
+/* blog section */
+.feature-image {
+  background: #fff url("assets/img/pexels-fauxels.jpg") right center/cover no-repeat;
+  height: 80vh;
+}
+.feature-image-default-alt {
+  background: #fff url("assets/img/hipster-stuff.jpg") center center/cover no-repeat;
+}
+
+.post {
+  position: relative;
+  border: 1px solid #ddd;
+}
+.post-image {
+  height: auto;
+}
+.post-details {
+  font-size: 1vw;
+  width: 90%;
+}
+.post-details i.fa,
+.post-details i.far {
+  padding-left: 10px;
+  color: #d95131;
+}
+.post-details i.fa:first-child {
+  padding-left: 0;
+}
+.post a,
+aside a,
+.resource h3 a {
+  color: #d95131;
+}
+.post a:hover {
+  color: #82311d;
+}
+/* blog section end */
+/* comment circle */
+.post-comments-badge {
+  height: 70px;
+  width: 70px;
+  position: absolute;
+  top: 53px;
+  right: 15px;
+  border: none;
+  border-radius: 100%;
+  background-color: #79b044;
+  text-align: center;
+  display: table;
+}
+.post-comments-badge:hover {
+  background-color: #51762e;
+}
+.post-comments-badge a {
+  display: table-cell;
+  vertical-align: middle;
+  color: white;
+  font-size: 20px;
+  line-height: 20px;
+}
+.post-comments-badge a:hover {
+  color: white;
+}
+/* comment circle End */
+/*widget section*/
+.widget ul li a:hover {
+  color: black;
+  position: relative;
+  left: 1px;
+}
+.widget .form-control:focus {
+  border-color: #79b044;
+  box-shadow: 0 0 0 0.25rem rgb(121, 176, 68);
+}
+/*widget section End*/
+/*comment section*/
+#comment ol li {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-radius: 5px;
+  font-size: 0.96em;
+}
+
+#leave-comment {
+  background: rgba(0, 0, 0, 0.02);
+}
+/*comment section End*/
+/*Resources Section*/
+.page-title {
+  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3);
+}
+.resource-parent {
+  position: relative;
+}
+.resource-parent .resource-btn {
+  position: absolute;
+  bottom: 10px;
+}
+
+/*Resources Section End*/
+
+@media screen and (max-width: 991px) {
+  #instructor .container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    max-width: 50%;
+  }
+}
+
+/* fixed top margin for menu */
+@media screen and (max-width: 782px) {
+	.logged-in .fixed-top {
+		top: 46px;
+	  }
+  }
