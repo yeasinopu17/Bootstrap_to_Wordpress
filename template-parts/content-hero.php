@@ -20,7 +20,7 @@
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-badge.png" alt="Bootstrp to Wp" />
                 </div>
                 <div class="col-md-7 hero-text">
-                    <h1 class="wow animate__zoomInDown" data-wow-duration="1s"><?php bloginfo('name') ?></h1>
+                    <h1 class="wow animate__zoomInDown" data-wow-duration="1.5s"><?php bloginfo('name') ?></h1>
                     <p class="lead">
                         <?php esc_html(bloginfo('description')); ?>
                     </p>
