@@ -60,7 +60,7 @@ get_header();
                         ?>
 
                         <?php while ($resources->have_posts()) : $resources->the_post();
-                            $resource_acf = get_fields(the_ID());
+                            $resource_acf = get_fields(get_the_ID());
                             // var_dump($resource_acf);
                         ?>
                             <div class="resource col-sm">
