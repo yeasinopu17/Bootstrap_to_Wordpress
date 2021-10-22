@@ -45,7 +45,7 @@
 
 		<header class="site-header" role="banner">
 			<!-- nav bar
-      	============== -->
+      		============== -->
 			<div class="navbar-wrapper">
 				<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 					<div class="container">

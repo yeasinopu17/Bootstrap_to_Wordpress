@@ -31,19 +31,19 @@
 </section>
 <!-- OPT in section 
     ======================-->
-<?php 
-$footer_price = get_fields(1064);//here 1064 is home page id
+<?php
+$footer_price = get_fields(1064); //here 1064 is home page id
 get_template_part('template-parts/content', 'optin', $footer_price); ?>
 
 
 <!--  footer
-    ======================-->
+======================-->
 <footer>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-3">
 				<p>
-					<a href="/"><img src="assets/img/logo.png" alt="" /></a>
+					<a href="/"><img src="<?php echo get_template_directory_uri().'/assets/img/logo.png'; ?>" alt="logo" /></a>
 				</p>
 			</div>
 			<div class="col-sm-6 text-center">
@@ -63,7 +63,7 @@ get_template_part('template-parts/content', 'optin', $footer_price); ?>
 </footer>
 
 <!--  modal
-    ======================-->
+======================-->
 
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
