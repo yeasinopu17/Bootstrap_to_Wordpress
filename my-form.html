@@ -1,0 +1,48 @@
+<div id="respond" class="comment-respond leave-comment border-top">
+  <h3 id="reply-title" class="comment-reply-title text-center pt-2 mb-0">
+    Leave a Comment
+    <span class="text-muted fs-5">
+      <a rel="nofollow" id="cancel-comment-reply-link" href="/wordpress3/no-content/#respond" style="display: none"
+        >Cancel reply</a
+      ></span
+    >
+  </h3>
+  <form
+    action="http://localhost/wordpress3/wp-comments-post.php"
+    method="post"
+    id="commentform"
+    class="p-4 comment-form"
+    novalidate=""
+  >
+    <p class="logged-in-as">
+      <a href="http://localhost/wordpress3/wp-admin/profile.php" aria-label="Logged in as Admin. Edit your profile."
+        >Logged in as Admin</a
+      >.
+      <a
+        href="http://localhost/wordpress3/wp-login.php?action=logout&amp;redirect_to=http%3A%2F%2Flocalhost%2Fwordpress3%2Fno-content%2F&amp;_wpnonce=cacfef1d58"
+        >Log out?</a
+      >
+    </p>
+    <div class="mb-3">
+      <label for="comment" class="form-label">Comment *</label><br /><textarea
+        class="form-control"
+        id="comment"
+        name="comment"
+        row="3"
+        required="required"
+        maxlength="65525"
+      ></textarea>
+    </div>
+    <p class="form-submit">
+      <input name="submit" type="submit" id="submit" class="submit btn btn-success" value="Submit" />
+      <input type="hidden" name="comment_post_ID" value="134" id="comment_post_ID" />
+      <input type="hidden" name="comment_parent" id="comment_parent" value="0" />
+    </p>
+    <input
+      type="hidden"
+      id="_wp_unfiltered_html_comment_disabled"
+      name="_wp_unfiltered_html_comment"
+      value="8aa870277e"
+    />
+  </form>
+</div>

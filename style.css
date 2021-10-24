@@ -455,7 +455,10 @@ aside a,
 }
 /*widget section End*/
 /*comment section*/
-#comment ol li {
+#comments ol {
+  list-style: none;
+}
+#comments ol li {
   background: rgba(0, 0, 0, 0.02);
   padding: 10px 20px;
   margin: 10px 0;
@@ -463,8 +466,28 @@ aside a,
   font-size: 0.96em;
 }
 
-#leave-comment {
+.leave-comment {
   background: rgba(0, 0, 0, 0.02);
+}
+
+#comments .comment-meta {
+  background: rgba(0, 0, 0, 0.02);
+  color: black;
+}
+#comments .comment-meta a {
+  color: black;
+}
+#comments .comment-metadata {
+  margin: 10px 0 0;
+}
+.reply a , #cancel-comment-reply-link {
+  color: #d95131;
+}
+#commentform p a {
+  color: #d95131;
+}
+.logged-in-as{
+  text-align: center;
 }
 /*comment section End*/
 /*Resources Section*/
@@ -496,7 +519,7 @@ aside a,
 
 /* fixed top margin for menu */
 @media screen and (max-width: 782px) {
-	.logged-in .fixed-top {
-		top: 46px;
-	  }
+  .logged-in .fixed-top {
+    top: 46px;
   }
+}

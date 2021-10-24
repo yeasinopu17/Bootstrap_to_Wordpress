@@ -128,10 +128,10 @@ function bootstrap2wordpress_widgets_init() {
 			'name'          => esc_html__('Sidebar', 'bootstrap2wordpress'),
 			'id'            => 'sidebar-1',
 			'description'   => esc_html__('Add widgets here.', 'bootstrap2wordpress'),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'before_widget' => '<section id="%1$s" class="widget %2$s bg-white mb-3 rounded-3 p-3">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
+			'before_title'  => '<h4 class="widget-title text-center text-decoration-underline">',
+			'after_title'   => '</h4>',
 		)
 	);
 }
@@ -203,3 +203,18 @@ function add_additional_class_on_a($classes, $item, $args) {
 }
 
 add_filter('nav_menu_link_attributes', 'add_additional_class_on_a', 10, 4);
+
+
+// edit excerpt [..] symbol
+function excerpt_more_symbol($more) {
+	if (!is_single()) {
+		$more = sprintf(
+			'<a class="read-more" href="%1$s">%2$s</a>',
+			get_permalink(get_the_ID()),
+			__('...Continue Reading. <i class="fas fa-forward"></i>', 'bootstrap2wordpress')
+		);
+	}
+
+	return $more;
+}
+add_filter('excerpt_more', 'excerpt_more_symbol');
