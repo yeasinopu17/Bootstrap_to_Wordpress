@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying 404 pages (not found)
  *
@@ -9,26 +10,55 @@
 
 get_header();
 ?>
+<section class="
+        container-fluid
+        feature-image
+        d-flex
+        justify-content-center
+        align-items-center
+        text-white " data-type="background" data-speed="2" style="height: 70vh;">
+	<h1 class="page-title wow animate__zoomInDown" data-wow-duration="1.5s"><?php esc_html_e('Oops! That page can&rsquo;t be found.', 'bootstrap2wordpress'); ?></h1>
+</section>
+<div class="container">
+	<div class="row pt-3" id="primary">
+		<main id="content" class="col-sm-8">
+			<div class="error-404 not-found">
+				<div class="page-content">
+					<h2>Don't fret ! Let's get back on track</h2>
+					<h3>Resourses</h3>
+					<p class="lead">Are you looking for specific resources ?</p>
 
-	<main id="primary" class="site-main">
+					<!-- resources section 
+					======================-->
+					<div class="resource-row overflow-hidden">
+						<div class="row g-2">
 
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'bootstrap2wordpress' ); ?></h1>
-			</header><!-- .page-header -->
+							<!-- custom query for Resources -->
+							<?php
+							$resources = new WP_Query(array(
+								'post_type' => 'resource',
+								'posts_per_page' => -1,
+								'orderby' => 'post_id',
+								'order' => 'ASC'
+							));
+							while ($resources->have_posts()) : $resources->the_post();
+								$resource_acf = get_fields(get_the_ID());
+								$resource_acf['element'] = 'excerpt';
 
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'bootstrap2wordpress' ); ?></p>
+								get_template_part('template-parts/content', 'resources', $resource_acf);
 
-					<?php
-					get_search_form();
+							endwhile;
+							wp_reset_postdata(); ?>
+						</div>
+					</div>
 
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
+					<!-- category 
+					======================-->
 
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'bootstrap2wordpress' ); ?></h2>
-						<ul>
+					<div class="widget widget_categories bg-white mt-2 rounded-3 p-3">
+						<h2 class="text-center">categories</h2>
+						<p class="lead border-bottom text-center">Our popular categories...</p>
+						<ul class="">
 							<?php
 							wp_list_categories(
 								array(
@@ -41,20 +71,18 @@ get_header();
 							);
 							?>
 						</ul>
-					</div><!-- .widget -->
 
-					<?php
-					/* translators: %1$s: smiley */
-					$bootstrap2wordpress_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'bootstrap2wordpress' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$bootstrap2wordpress_archive_content" );
 
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
-
+					</div>
+				</div>
+			</div>
+		</main>
+		<!-- side bar 
+        ======================-->
+		<aside class="col-sm-4">
+			<?php get_sidebar(); ?>
+		</aside>
+	</div>
+</div>
 <?php
 get_footer();

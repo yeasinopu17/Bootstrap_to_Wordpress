@@ -218,3 +218,4 @@ function excerpt_more_symbol($more) {
 	return $more;
 }
 add_filter('excerpt_more', 'excerpt_more_symbol');
+

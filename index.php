@@ -17,7 +17,7 @@ get_header();
 ?>
 
 <!--hero section 
-    ======================-->
+======================-->
 <section class="
         container-fluid
         feature-image feature-image-default-alt

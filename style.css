@@ -359,6 +359,7 @@ footer {
   padding: 20px 0 10px;
   font-size: 1rem;
 }
+
 footer p {
   margin: 0;
 }
@@ -378,6 +379,23 @@ footer li.signup-link a {
 footer li.signup-link a:hover {
   font-weight: bold;
 }
+
+/* sidebar footer */
+article footer {
+  background-color: inherit;
+  color: black;
+  padding: 0;
+  font-size: 1rem;
+}
+article footer a:link, article footer a:visited {
+  color: #d95131;
+}
+article footer a:hover{
+  color: #742715;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+/* sidebar footer END*/
 
 /* blog section */
 .feature-image {
